@@ -10,6 +10,6 @@ int binary_tree_is_root(const binary_tree_t *node)
 {
 	return (node != NULL && node->parent == NULL);
 }
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 
 #endif

@@ -15,7 +15,7 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 		return (node->parent->parent->left);
 	return (node->parent->parent->right);
 }
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"

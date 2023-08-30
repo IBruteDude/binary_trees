@@ -15,7 +15,7 @@ void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
 		binary_tree_preorder(tree->right, func);
 	}
 }
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"

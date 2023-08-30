@@ -3,6 +3,6 @@
 /**
  * 
  */
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 
 #endif

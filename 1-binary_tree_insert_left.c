@@ -27,7 +27,7 @@ binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 	return (new_node);
 }
 
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"

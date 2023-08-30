@@ -14,7 +14,7 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 		binary_tree_nodes(tree->left) +
 		binary_tree_nodes(tree->right));
 }
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"

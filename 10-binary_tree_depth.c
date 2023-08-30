@@ -14,7 +14,7 @@ size_t binary_tree_depth(const binary_tree_t *tree)
 		tree = tree->parent, depth++;
 	return (depth);
 }
-#ifdef BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
