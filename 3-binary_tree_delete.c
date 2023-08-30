@@ -8,22 +8,22 @@
 void binary_tree_delete(binary_tree_t *tree)
 {
 	if (tree != NULL)
-	{
-		if (tree->parent != NULL)
-		{
-			if (tree == tree->parent->left)
-			{
-				tree->parent->left = NULL;
-			}
-			else if (tree == tree->parent->right)
-			{
-				tree->parent->right = NULL;
-			}
-		}
-		binary_tree_delete(tree->left);
-		binary_tree_delete(tree->right);
-		free(tree);
-	}
+    {
+        if (tree->left != NULL)
+        {
+            if (tree->left->right != NULL || tree->left->left != NULL){
+                binary_tree_delete(tree->left);
+            }
+        }
+
+        if (tree->right != NULL)
+        {
+            if (tree->right->right != NULL || tree->right->left != NULL){
+                binary_tree_delete(tree->right);
+            }
+        }
+    }
+    free(tree);
 }
 
 #if BINARY_TREE_TESTS
