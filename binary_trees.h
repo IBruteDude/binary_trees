@@ -49,7 +49,7 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 /* the tests enabling macro */
-#define BINARY_TREE_TESTS			1
+#define BINARY_TREE_TESTS			0
 #define BINARY_TREE_TESTS_INCD_MAIN	0
 
 #endif /* _BINARY_TREES_H_ */
