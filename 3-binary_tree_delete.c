@@ -26,7 +26,7 @@ void binary_tree_delete(binary_tree_t *tree)
 	}
 }
 
-#if BINARY_TREE_TESTS
+#if BINARY_TREE_TESTS_INCL_MAIN
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"

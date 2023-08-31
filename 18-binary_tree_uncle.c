@@ -6,7 +6,6 @@
  * @node: the input tree node
  * Return: the address of the uncle of the node if found, NULL otherwise
  */
-
 binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 {
 	if (node == NULL || node->parent == NULL || node->parent->parent == NULL)
