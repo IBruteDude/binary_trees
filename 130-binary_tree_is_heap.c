@@ -72,23 +72,31 @@ int left_leaning(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_is_complete - determine if a tree is complete
+ * binary_tree_is_heap - determine if a tree is a valid max heap
  *
  * @tree: the input tree node
- * Return: 1 if the tree is complete, 0 otherwise
+ * Return: 1 if the tree is a max heap, 0 otherwise
  */
-int binary_tree_is_complete(const binary_tree_t *tree)
+int binary_tree_is_heap(const binary_tree_t *tree)
 {
 	size_t tree_size = binary_tree_size(tree);
 	size_t tree_height = binary_tree_height(tree);
-
-	if (tree == NULL)
-		return (0);
-	/* size = 2^(height + 1) - 1 */
-	return (
+	int complete = (
 		(size_t)((1 << tree_height) - 1) < tree_size &&
 		tree_size <= ((1u << (tree_height + 1)) - 1) &&
 		left_leaning(tree)
+	);
+
+	if (
+		tree == NULL || !complete ||
+		(tree->left != NULL && tree->left->n > tree->n) ||
+		(tree->right != NULL && tree->right->n > tree->n)
+	)
+		return (0);
+	/* size = 2^(height + 1) - 1 */
+	return (
+		(tree->left == NULL || binary_tree_is_heap(tree->left)) &&
+		(tree->right == NULL || binary_tree_is_heap(tree->right))
 	);
 }
 #if BINARY_TREE_TESTS
