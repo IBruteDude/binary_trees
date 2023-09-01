@@ -1,6 +1,7 @@
 #include "binary_trees.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <alloca.h>
 #ifdef max
 #undef max
 #endif
@@ -49,8 +50,8 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	if (tree == NULL || func == NULL)
 		return;
 	height = binary_tree_height(tree);
-	node_level = calloc(1u << height, sizeof(pnode));
-	*node_level = (binary_tree_t*)tree, level_size = 1;
+	node_level = alloca((1u << height) * sizeof(pnode));
+	*node_level = (binary_tree_t *)tree, level_size = 1;
 	while (level_size <= (1u << height))
 	{
 		for (i = 0; i < level_size; i++)
@@ -76,7 +77,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
  */
 void print_num(int n)
 {
-    printf("%d\n", n);
+	printf("%d\n", n);
 }
 
 /**
@@ -86,29 +87,29 @@ void print_num(int n)
  */
 int main(void)
 {
-    binary_tree_t *root;
+	binary_tree_t *root;
 
-    root = binary_tree_node(NULL, 98);
-    root->left = binary_tree_node(root, 12);
-    root->right = binary_tree_node(root, 402);
-    root->left->left = binary_tree_node(root->left, 6);
-    root->left->right = binary_tree_node(root->left, 56);
-    root->right->left = binary_tree_node(root->right, 256);
-    root->right->right = binary_tree_node(root->right, 512);
+	root = binary_tree_node(NULL, 98);
+	root->left = binary_tree_node(root, 12);
+	root->right = binary_tree_node(root, 402);
+	root->left->left = binary_tree_node(root->left, 6);
+	root->left->right = binary_tree_node(root->left, 56);
+	root->right->left = binary_tree_node(root->right, 256);
+	root->right->right = binary_tree_node(root->right, 512);
 
 	root->left->left->left = binary_tree_node(root->left->left, 7);
-    root->left->right->left = binary_tree_node(root->left->right, 57);
-    root->right->left->left = binary_tree_node(root->right->left, 257);
-    root->right->right->left = binary_tree_node(root->right->right, 513);
-	
-	root->left->left->right = binary_tree_node(root->left->left, 8);
-    root->left->right->right = binary_tree_node(root->left->right, 58);
-    root->right->left->right = binary_tree_node(root->right->left, 258);
-    root->right->right->right = binary_tree_node(root->right->right, 514);
+	root->left->right->left = binary_tree_node(root->left->right, 57);
+	root->right->left->left = binary_tree_node(root->right->left, 257);
+	root->right->right->left = binary_tree_node(root->right->right, 513);
 
-    binary_tree_print(root);
-    binary_tree_levelorder(root, &print_num);
-    binary_tree_delete(root);
-    return (0);
+	root->left->left->right = binary_tree_node(root->left->left, 8);
+	root->left->right->right = binary_tree_node(root->left->right, 58);
+	root->right->left->right = binary_tree_node(root->right->left, 258);
+	root->right->right->right = binary_tree_node(root->right->right, 514);
+
+	binary_tree_print(root);
+	binary_tree_levelorder(root, &print_num);
+	binary_tree_delete(root);
+	return (0);
 }
 #endif

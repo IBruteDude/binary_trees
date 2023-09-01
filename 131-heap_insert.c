@@ -163,34 +163,34 @@ int validate_tree(binary_tree_t *tree)
  */
 int main(void)
 {
-    heap_t *root;
-    heap_t *node;
+	heap_t *root;
+	heap_t *node;
 
-    root = NULL;
-    node = heap_insert(&root, 98);
-    printf("Inserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 402);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 12);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 46);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 128);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 256);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 512);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 50);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
+	root = NULL;
+	node = heap_insert(&root, 98);
+	printf("Inserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 402);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 12);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 46);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 128);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 256);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 512);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
+	node = heap_insert(&root, 50);
+	printf("\nInserted: %d\n", node->n);
+	binary_tree_print(root);
 	if (!validate_tree(root))
 		return (0);
 }
