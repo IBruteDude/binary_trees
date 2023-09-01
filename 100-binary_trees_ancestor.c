@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-#include <alloca.h>
 
 /**
  * binary_tree_depth - determine the depth of a node inside a tree
@@ -33,9 +32,9 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 
 	if (first == NULL || second == NULL)
 		return (NULL);
-	first_bloodline = alloca((binary_tree_depth(first) + 1) *
+	first_bloodline = calloc(binary_tree_depth(first) + 1,
 							sizeof(binary_tree_t *));
-	second_bloodline = alloca((binary_tree_depth(second) + 1) *
+	second_bloodline = calloc(binary_tree_depth(second) + 1,
 							sizeof(binary_tree_t *));
 	current = (binary_tree_t *)first;
 	while (current != NULL)
@@ -49,6 +48,8 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 
 	while (first_bloodline[--f_i] == second_bloodline[--s_i])
 		current = first_bloodline[f_i];
+	free(first_bloodline);
+	free(second_bloodline);
 	return (current);
 }
 

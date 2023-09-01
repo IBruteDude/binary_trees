@@ -1,7 +1,6 @@
 #include "binary_trees.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <alloca.h>
 #ifdef max
 #undef max
 #endif
@@ -50,7 +49,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 	if (tree == NULL || func == NULL)
 		return;
 	height = binary_tree_height(tree);
-	node_level = alloca((1u << height) * sizeof(pnode));
+	node_level = calloc(1u << height, sizeof(pnode));
 	*node_level = (binary_tree_t *)tree, level_size = 1;
 	while (level_size <= (1u << height))
 	{
@@ -63,6 +62,7 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 				node_level[2 * i] = node_level[i]->left;
 		level_size <<= 1;
 	}
+	free(node_level);
 }
 
 #if BINARY_TREE_TESTS
