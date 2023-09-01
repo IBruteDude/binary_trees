@@ -1,22 +1,22 @@
 #include "binary_trees.h"
 
 /**
- * array_to_heap - populate a binary heap from an array
+ * array_to_bst - populate a binary search tree from an array
  *
  * @array: input integers array
  * @size: the array's size
- * Return: the root of the created heap
+ * Return: the root of the created BST
  */
-heap_t *array_to_heap(int *array, size_t size)
+bst_t *array_to_bst(int *array, size_t size)
 {
-	heap_t *heap;
+	bst_t *bst;
 
 	if (size == 0 || array == NULL)
 		return (NULL);
-	heap = malloc(sizeof(*heap));
+	bst = malloc(sizeof(*bst));
 	while (size--)
-		heap_insert(heap, *(array++));
-	return (heap);
+		bst_insert(bst, *(array++));
+	return (bst);
 }
 #if BINARY_TREE_TESTS
 #include <stdlib.h>
@@ -29,14 +29,14 @@ heap_t *array_to_heap(int *array, size_t size)
  */
 int main(void)
 {
-    heap_t *tree;
+    bst_t *tree;
     int array[] = {
         79, 47, 68, 87, 84, 91, 21, 32, 34, 2,
         20, 22, 98, 1, 62, 95
     };
     size_t n = sizeof(array) / sizeof(array[0]);
 
-    tree = array_to_heap(array, n);
+    tree = array_to_bst(array, n);
     if (!tree)
         return (1);
     binary_tree_print(tree);

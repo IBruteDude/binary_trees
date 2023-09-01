@@ -11,19 +11,13 @@ int check_sub_tree_Left(const binary_tree_t *node, int max)
 	int left = 0, right = 0;
 
 	if (node == NULL)
-	{
 		return (1);
-	}
 	else
-	{
-		if (node->n >= max)
-			return (0);
-		left = check_sub_tree_Left(node->left, max);
-		right = check_sub_tree_Left(node->right, max);
-		if (left == right && left == 1)
-			return (1);
-		return (0);
-	}
+		return (
+			(node->n < max) &&
+			check_sub_tree_Left(node->left, max) &&
+			check_sub_tree_Left(node->right, max)
+		);
 }
 /**
  * check_sub_tree_Right - check if all the nodes are bigger than the
@@ -42,13 +36,11 @@ int check_sub_tree_Right(const binary_tree_t *node, int min)
 	}
 	else
 	{
-		if (node->n <= min)
+		return (left && right);
+		if (node->n >= min)
 			return (0);
 		left = check_sub_tree_Right(node->left, min);
 		right = check_sub_tree_Right(node->right, min);
-		if (left == right && left == 1)
-			return (1);
-		return (0);
 	}
 }
 /**
@@ -84,10 +76,5 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 			return (0);
 		right = binary_tree_is_bst(tree->right);
 	}
-	if (left != 2 || right != 2)
-	{
-		if (left == 0 || right == 0)
-			return (0);
-	}
-	return (1);
+	return (((left == 2 && right == 2) || (left != 0 && right != 0)));
 }
