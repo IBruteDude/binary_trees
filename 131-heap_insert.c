@@ -55,37 +55,6 @@ size_t binary_tree_size(const binary_tree_t *tree)
 	return (1 + binary_tree_size(tree->left) + binary_tree_size(tree->right));
 }
 
-#define HEAP_ROTATE_LEFT(H) \
-do { \
-} while (0)
-
-
-void heap_child_balancer(heap_t **H)
-{
-
-}
-
-void heap_balance(heap_t *root)
-{
-	size_t l_h, r_h, balance;
-
-	if (root != NULL)
-	{
-		heap_balance(root->left);
-		heap_balance(root->right);
-		l_h = binary_tree_height(root->left);
-		r_h = binary_tree_height(root->right);
-		if (root->right == NULL && l_h == 0)
-			return;
-		balance = ((root->left != NULL) + l_h) - ((root->right != NULL) + r_h);
-		if (balance != 0 && balance != 1)
-		{
-			if (root->left)
-			;
-		}
-	}
-}
-
 /**
  * heap_insert - inserts a new value into a max heap
  *
@@ -126,32 +95,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	return (*root) = (*root)->parent = node;
 }
 
-int validate_tree(binary_tree_t *tree)
-{
-	if (tree == NULL)
-		return (1);
-	if (tree->left != NULL)
-	{
-		if(tree->left->parent != tree)
-		{
-			printf("node %03d parent is bad\n", tree->left->n);
-			return (0);
-		}
-		printf("node %03d parent is %03d\n", tree->left->n, tree->n);
-	}
-	if (tree->right != NULL)
-	{
-		if(tree->right->parent != tree)
-		{
-			printf("node %03d parent is bad\n", tree->right->n);
-			return (0);
-		}
-		printf("node %03d parent is %03d\n", tree->right->n, tree->n);
-	}
-	return validate_tree(tree->left) && validate_tree(tree->right);
-}
 
-#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -191,7 +135,4 @@ int main(void)
 	node = heap_insert(&root, 50);
 	printf("\nInserted: %d\n", node->n);
 	binary_tree_print(root);
-	if (!validate_tree(root))
-		return (0);
 }
-#endif
