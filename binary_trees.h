@@ -70,7 +70,7 @@ int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
 
 /* the tests enabling macro */
-#define BINARY_TREE_TESTS			1
+#define BINARY_TREE_TESTS			0
 #define BINARY_TREE_TESTS_INCD_MAIN	0
 
 #endif /* _BINARY_TREES_H_ */
