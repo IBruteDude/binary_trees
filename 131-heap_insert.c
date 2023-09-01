@@ -96,6 +96,7 @@ heap_t *heap_insert(heap_t **root, int value)
 }
 
 
+#if BINARY_TREE_TESTS
 #include <stdlib.h>
 #include <stdio.h>
 #include "binary_trees.h"
@@ -136,3 +137,4 @@ int main(void)
 	printf("\nInserted: %d\n", node->n);
 	binary_tree_print(root);
 }
+#endif
